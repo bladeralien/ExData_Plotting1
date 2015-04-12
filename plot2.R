@@ -1,0 +1,5 @@
+hpc = read.table("household_power_consumption.txt", header=TRUE, sep=";", quote="", na.string="?")
+hpcsub = subset(hpc, as.Date(hpc$Date, "%d/%m/%Y")>=as.Date("2007-02-01") & as.Date(hpc$Date, "%d/%m/%Y")<=as.Date("2007-02-02"))
+png(filename="plot2.png")
+plot(strptime(paste(hpcsub$Date, hpcsub$Time), format="%d/%m/%Y %H:%M:%S"), hpcsub$Global_active_power, type="l", xlab="", ylab="Global Active Power (kilowatts)")
+dev.off()
